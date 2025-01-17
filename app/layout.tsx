@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import '@mantine/core/styles.css'
+import '@mantine/carousel/styles.css';
 import businessConfig from './businessConfig'
 import { useColorScheme, useLocalStorage } from '@mantine/hooks'
 import { useState, useEffect } from 'react'

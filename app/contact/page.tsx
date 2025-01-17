@@ -1,6 +1,7 @@
 'use client'
 
 import { Container, Title, Grid, Text, TextInput, Textarea, Button, Stack, SimpleGrid, Alert } from '@mantine/core'
+import { Carousel } from '@mantine/carousel';
 import { useForm } from '@mantine/form'
 import Image from 'next/image'
 import GoogleMap from '../components/GoogleMap'
@@ -32,7 +33,7 @@ export default function Contact() {
 
   return (
     <>
-      <script 
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -59,7 +60,7 @@ export default function Contact() {
 
       <Container size="lg" py="xl">
         <Title order={1} size="h1" mb="xl">Contact Our Expert Team</Title>
-        
+
         <div style={{ marginBottom: '48px' }}>
           <GoogleMap address={fullAddress} />
         </div>
@@ -71,43 +72,47 @@ export default function Contact() {
                 <Title order={2} size="h2" mb="md">Get in Touch</Title>
                 <Text mb="xl">We'd love to hear from you. Our expert team is ready to answer your questions and provide the professional support you need.</Text>
               </div>
-              
-              <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
-                <Image
-                  src={businessConfig.images.contact.image1}
-                  alt="Our modern office exterior"  
-                  width={300}
-                  height={200}
-                  style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-                />
-                <Image
-                  src={businessConfig.images.contact.image2}
-                  alt="Our collaborative workspace"
-                  width={300}
-                  height={200}
-                  style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-                />
-              </SimpleGrid>
-              
+              <Carousel
+                withIndicators
+                height={300}
+                slideSize="50%"
+                slideGap="md"
+                align="start"
+                slidesToScroll={2}
+              >
+                {businessConfig.images.contact.carouselSlides.map((slide, index) => (
+                  <Carousel.Slide
+                    key={index}
+                    id={slide.altText.toLowerCase().replace(/\s+/g, '-')}
+                  >
+                    <Image
+                      src={slide.image}
+                      alt={slide.altText}
+                      width={300}
+                      height={200}
+                      style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                    /></Carousel.Slide>))}
+              </Carousel>
+
               <div>
                 <Title order={3} size="h3" mb="xs">Address</Title>
                 <Text>{fullAddress}</Text>
               </div>
-              
+
               <div>
                 <Title order={3} size="h3" mb="xs">Phone</Title>
                 <Text>{businessConfig.contact.phone}</Text>
               </div>
-              
+
               <div>
                 <Title order={3} size="h3" mb="xs">Email</Title>
                 <Text>{businessConfig.contact.email}</Text>
               </div>
             </Stack>
           </Grid.Col>
-          
+
           <Grid.Col span={{ base: 12, md: 6 }}>
-          <form onSubmit={form.onSubmit(handleSubmit)}>
+            <form onSubmit={form.onSubmit(handleSubmit)}>
               <Stack gap="md">
                 {formStatus && (
                   <Alert
@@ -125,14 +130,14 @@ export default function Contact() {
                   required
                   {...form.getInputProps('name')}
                 />
-                
+
                 <TextInput
                   label="Email"
                   placeholder="your@email.com"
                   required
                   {...form.getInputProps('email')}
                 />
-                
+
                 <Textarea
                   label="Message"
                   placeholder="How can we help you?"
@@ -140,7 +145,7 @@ export default function Contact() {
                   minRows={4}
                   {...form.getInputProps('message')}
                 />
-                
+
                 <Button type="submit" size="lg">
                   Send Message
                 </Button>

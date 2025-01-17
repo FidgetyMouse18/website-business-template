@@ -17,6 +17,11 @@ export interface TeamMember {
   bio: string;
   image: string;
 }
+export interface CarouselSlide {
+  image: string;
+  altText: string;
+
+}
 
 export interface BusinessConfig {
   name: string;
@@ -53,8 +58,7 @@ export interface BusinessConfig {
       background: string;
     };
     contact: {
-      image1: string;
-      image2: string;
+      carouselSlides: CarouselSlide[];
     };
   }
   settings: {
