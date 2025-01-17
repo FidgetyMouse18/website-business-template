@@ -1,12 +1,15 @@
 'use client'
 
-import { Container, Title, Grid, Text, TextInput, Textarea, Button, Stack, SimpleGrid } from '@mantine/core'
+import { Container, Title, Grid, Text, TextInput, Textarea, Button, Stack, SimpleGrid, Alert } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import Image from 'next/image'
 import GoogleMap from '../components/GoogleMap'
 import businessConfig from '../businessConfig'
+import { useState } from 'react'
+import { IconCheck, IconX } from '@tabler/icons-react'
 
 export default function Contact() {
+  const [formStatus, setFormStatus] = useState<{ success: boolean; message: string } | null>(null)
   const form = useForm({
     initialValues: {
       name: '',
@@ -71,14 +74,14 @@ export default function Contact() {
               
               <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
                 <Image
-                  src="/placeholder.svg?height=200&width=300"
-                  alt="Our modern office exterior"
+                  src={businessConfig.images.contact.image1}
+                  alt="Our modern office exterior"  
                   width={300}
                   height={200}
                   style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
                 />
                 <Image
-                  src="/placeholder.svg?height=200&width=300"
+                  src={businessConfig.images.contact.image2}
                   alt="Our collaborative workspace"
                   width={300}
                   height={200}
@@ -104,8 +107,18 @@ export default function Contact() {
           </Grid.Col>
           
           <Grid.Col span={{ base: 12, md: 6 }}>
-            <form onSubmit={form.onSubmit(handleSubmit)}>
+          <form onSubmit={form.onSubmit(handleSubmit)}>
               <Stack gap="md">
+                {formStatus && (
+                  <Alert
+                    icon={formStatus.success ? <IconCheck size="1rem" /> : <IconX size="1rem" />}
+                    title={formStatus.success ? "Success!" : "Error"}
+                    color={formStatus.success ? "green" : "red"}
+                  >
+                    {formStatus.message}
+                  </Alert>
+                )}
+
                 <TextInput
                   label="Name"
                   placeholder="Your name"

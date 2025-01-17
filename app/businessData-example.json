@@ -1,0 +1,90 @@
+{
+    "name": "Your Business Name",
+    "domain": "example.com",
+    "logo": "/logo.png",
+    "tagline": "Professional Services for Your Business Success",
+    "description": "We provide top-notch services tailored to your unique business needs",
+    "foundedYear": 2010,
+    "address": {
+      "street": "Smith St",
+      "city": "Capalaba",
+      "state": "Queensland",
+      "zip": "4157",
+      "country": "Australia"
+    },
+    "contact": {
+      "phone": "(123) 456-7890",
+      "email": "info@yourbusinessname.com"
+    },
+    "socialMedia": [
+      { "platform": "Facebook", "url": "https://www.facebook.com/yourbusinessname" },
+      { "platform": "LinkedIn", "url": "https://www.linkedin.com/company/yourbusinessname" },
+      { "platform": "Twitter", "url": "https://twitter.com/yourbusinessname" }
+    ],
+    "services": [
+      {
+        "title": "Service 1",
+        "description": "Description of Service 1 goes here.",
+        "image": "/placeholder.png"
+      },
+      {
+        "title": "Service 2",
+        "description": "Description of Service 2 goes here.",
+        "image": "/placeholder.png"
+      },
+      {
+        "title": "Service 3",
+        "description": "Description of Service 3 goes here.",
+        "image": "/placeholder.png"
+      }
+    ],
+    "team": [
+      {
+        "name": "John Doe",
+        "role": "CEO",
+        "bio": "John has over 20 years of experience in the industry.",
+        "image": "/placeholder.png"
+      },
+      {
+        "name": "Jane Smith",
+        "role": "COO",
+        "bio": "Jane is an expert in operations and process optimization.",
+        "image": "/placeholder.png"
+      },
+      {
+        "name": "Mike Johnson",
+        "role": "CTO",
+        "bio": "Mike leads our technology initiatives and innovations.",
+        "image": "/placeholder.png"
+      },
+      {
+        "name": "Sarah Brown",
+        "role": "Head of Marketing",
+        "bio": "Sarah brings creative marketing strategies to our team.",
+        "image": "/placeholder.png"
+      }
+    ],
+    "values": ["Excellence", "Integrity", "Innovation", "Client Focus"],
+    "settings": {
+      "logoText": "Text"
+    },
+    "images": {
+      "home": {
+        "background1": "/placeholder.png",
+        "background2": "/placeholder.png",
+        "expertise": "/placeholder.png"
+      },
+      "services": {
+        "background": "/placeholder.png"
+      },
+      "people": {
+        "background": "/placeholder.png"
+      },
+      "contact": {
+        "image1": "/placeholder.png",
+        "image2": "/placeholder.png"
+      }
+    }
+  }
+  
+  

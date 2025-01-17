@@ -24,7 +24,7 @@ export default function People() {
       }} />
 
       <BackgroundImage
-        src="/placeholder.svg?height=400&width=1920"
+        src={businessConfig.images.services.background}
         h={400}
         pos="relative"
       >

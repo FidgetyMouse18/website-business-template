@@ -20,7 +20,7 @@ export default function Home() {
       }} />
 
       <BackgroundImage
-        src="/placeholder.svg?height=600&width=1920"
+        src={businessConfig.images.home.background1}
         h={600}
         pos="relative"
       >
@@ -85,7 +85,7 @@ export default function Home() {
               </List>
             </div>
             <Image
-              src="/placeholder.svg?height=400&width=600"
+              src={businessConfig.images.home.expertise}
               alt="Team of experts collaborating on a business solution"
               width={600}
               height={400}
@@ -96,7 +96,7 @@ export default function Home() {
 
         <section aria-labelledby="our-values" style={{ marginTop: '80px' }}>
           <BackgroundImage
-            src="/placeholder.svg?height=400&width=1920"
+            src={businessConfig.images.home.background2}
             h={400}
           >
             <Container size="lg" h="100%" pos="relative">
