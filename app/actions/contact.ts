@@ -15,7 +15,13 @@ export async function submitContactForm(formData: FormData) {
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: parseInt(process.env.SMTP_PORT || '587'),
-    secure: process.env.SMTP_SECURE === 'true',
+    secure: true,
+    secureConnection: false,
+    tls: {
+      ciphers: "SSLv3",
+    },
+    requireTLS: true,
+    connectionTimeout: 10000,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
@@ -24,7 +30,7 @@ export async function submitContactForm(formData: FormData) {
 
   try {
     await transporter.sendMail({
-      from: `"${name}" <${email}>`,
+      from: `"${name} via ${businessConfig.name} Website" <${process.env.SMTP_USER}>`,
       to: businessConfig.contact.email,
       subject: `New contact form submission from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,

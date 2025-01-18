@@ -8,6 +8,7 @@ import GoogleMap from '../components/GoogleMap'
 import businessConfig from '../businessConfig'
 import { useState } from 'react'
 import { IconCheck, IconX } from '@tabler/icons-react'
+import { submitContactForm } from '../actions/contact'
 
 export default function Contact() {
   const [formStatus, setFormStatus] = useState<{ success: boolean; message: string } | null>(null)
@@ -24,9 +25,16 @@ export default function Contact() {
     },
   })
 
-  const handleSubmit = (values: typeof form.values) => {
-    console.log('Form submitted:', values)
-    form.reset()
+  const handleSubmit = async (values: typeof form.values) => {
+    const formData = new FormData()
+    Object.entries(values).forEach(([key, value]) => formData.append(key, value))
+    
+    const result = await submitContactForm(formData)
+    setFormStatus(result)
+
+    if (result.success) {
+      form.reset()
+    }
   }
 
   const fullAddress = `${businessConfig.address.street}, ${businessConfig.address.city}, ${businessConfig.address.state} ${businessConfig.address.zip}, ${businessConfig.address.country}`
